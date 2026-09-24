@@ -3,7 +3,7 @@ import React from 'react';
 
 function HeroSection() {
     return (
-        <div className="hero bg-base-200">
+        <div className="hero bg-base-200 py-12 sm:15 lg:py-17">
   <div className="hero-content flex-col lg:flex-row-reverse">
     
     <Image src='/banner.png' alt='Image of Banner'
@@ -17,7 +17,7 @@ function HeroSection() {
         FitLog is a dark, no-nonsense gym companion: pick a lift, lock it <br />
 into today's plan, and watch the week's work add up.
       </p>
-      <button className="btn btn-primary">BROWSE WORKOUTS</button>
+      <button className="btn bg-[#C2F800] text-black">BROWSE WORKOUTS</button>
     </div>
   </div>
 </div>

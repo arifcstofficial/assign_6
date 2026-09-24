@@ -18,7 +18,7 @@ const TheLibrary = async () => {
 
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div>
+            <div className='mt-18 pb-7'>
                 <h1 className='font-bold text-4xl'>THE LIBRARY</h1>
                 <p>Twelve lifts covering every major muscle group.</p>
             </div>
