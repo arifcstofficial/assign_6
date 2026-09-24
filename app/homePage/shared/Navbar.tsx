@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Navbar = () => {
@@ -17,13 +18,13 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-6">
-                        <li><button className="text-[#C2F800] bg-slate-700 rounded-4xl">Workouts</button></li>
-                        <li><button>My Plan</button></li>
+                        <li><Link href='/' className="text-[#C2F800] bg-slate-700 rounded-4xl">Workouts</Link></li>
+                        <li><button className='text-white'>My Plan</button></li>
                     </ul>
                 </div>
                 <div className="navbar-end gap-5">
                     <div className='flex items-center justify-center gap-3'>
-                        <button className="bg-transparent border-none shadow-none  btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">Plan</button>
+                        <button className="bg-transparent border-none shadow-none text-white btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">Plan</button>
 
                        <div className="badge bg-amber-200 badge-md text-black badge-outline rounded-full">0</div>
 
@@ -31,7 +32,7 @@ const Navbar = () => {
                     <div className='flex items-center justify-center gap-3'>
                         <button className="bg-transparent border-none shadow-none text-slate-400 btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">Saved</button>
                         <div className="bg-[##C2F800]">
-                            <div className="badge bg-transparent border-slate-600 badge-outline">0</div>
+                            <div className="badge bg-transparent border-slate-600 badge-outline text-white">0</div>
                         </div>
                     </div>
 
@@ -40,8 +41,8 @@ const Navbar = () => {
 
             <div className="collapse-content lg:hidden z-1">
                 <ul className="menu">
-                    <li><button className="text-[#C2F800] bg-slate-700 rounded-4xl">Workouts</button></li>
-                    <li><button>My Plan</button></li>
+                        <li><Link href='/' className="text-[#C2F800] bg-slate-700 rounded-4xl">Workouts</Link></li>
+                    <li><button className='text-white'>My Plan</button></li>
                 </ul>
             </div>
         </div>
