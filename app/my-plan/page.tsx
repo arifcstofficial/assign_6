@@ -1,6 +1,10 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
+import TodaysPlanPage from './todaysPlan/page';
 
 const MyPlanPage = () => {
+
+   const[showTodaysPlanPage,setShowTodaysPlanPage]=useState(false); 
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -26,18 +30,17 @@ const MyPlanPage = () => {
             </div>
 
             {/* badges and sort-By */}
-            <div>
+            
                 <div>
                     <div role="tablist" className="tabs tabs-lift">
-                        <a role="tab" className="tab hover:bg-yellow-200 hover:text-black">Today's Plan</a>
+                        <button onClick={()=>setShowTodaysPlanPage(true)} role="tab" className="tab hover:bg-yellow-200 hover:text-black">Today's Plan</button>
                         <a role="tab" className="tab tab-active hover:bg-yellow-200 hover:text-black">Saved</a>
                     </div>
                 </div>
-
-                <div>
-
-                </div>
-            </div>
+            
+            {showTodaysPlanPage && <TodaysPlanPage></TodaysPlanPage>}
+            
+            
         </div>
     );
 };

@@ -2,9 +2,11 @@
 import React, { createContext, useState } from 'react';
 import { LibraryDataType } from '../types/LibraryDataType';
 
+
 interface TodaysPlanContextType{
     todaysPlan:LibraryDataType[];
     addToTodaysPlan:(library:LibraryDataType)=>void;
+    removeFromTodaysPlan:(id:number)=>void;
 }
 
 
@@ -14,12 +16,27 @@ const TodaysPlanContext =createContext<TodaysPlanContextType |undefined>
 export default function TodaysPlanProvider({children,}:{children:React.ReactNode;}){
       
     const [todaysPlan,setTodaysPlan]=useState<LibraryDataType[]>([]);
+   
     const addToTodaysPlan=(library:LibraryDataType)=>{
-        setTodaysPlan((previous)=>[...previous,library]);
+        setTodaysPlan((previous)=>{
+            const alreadyExists=previous.some((item)=>item.id===library.id)
+          if(alreadyExists)
+          {
+            return previous;
+          }
+             
+            else
+                {
+                return [...previous,library];}
+        });
     };
 
+    const removeFromTodaysPlan=(id:number)=>{
+         setTodaysPlan((previous)=>previous.filter((library)=>library.id !== id))
+    }
+
     return(
-        <TodaysPlanContext.Provider value={{todaysPlan,addToTodaysPlan}}>{children}</TodaysPlanContext.Provider>
+        <TodaysPlanContext.Provider value={{todaysPlan,addToTodaysPlan,removeFromTodaysPlan}}>{children}</TodaysPlanContext.Provider>
     )
 }
 

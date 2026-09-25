@@ -1,9 +1,11 @@
+"use client"
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import NavLinkClass from './NavLink';
+import { useTodayPlan } from '@/app/context/TodaysPlanContext';
 
 const Navbar = () => {
+ const {todaysPlan}=useTodayPlan();
     return (
         <div className="max-lg:collapse bg-base-200 lg:mb-3 shadow-sm w-full rounded-md
         px-4 sm:px-6 lg:px-8">
@@ -27,7 +29,7 @@ const Navbar = () => {
                     <div className='flex items-center justify-center gap-3'>
                         <button className="bg-transparent border-none shadow-none text-white btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">Plan</button>
 
-                       <div className="badge bg-amber-200 badge-md text-black badge-outline rounded-full">0</div>
+                       <div className="badge bg-amber-200 badge-md text-black badge-outline rounded-full">{todaysPlan.length}</div>
 
                     </div>
                     <div className='flex items-center justify-center gap-3'>

@@ -1,5 +1,4 @@
 import { LibraryDataType } from '@/app/types/LibraryDataType';
-import React from 'react';
 import Image from "next/image";
 import { notFound } from 'next/navigation';
 import { Bookmark, Calendar } from 'lucide-react';
@@ -37,7 +36,7 @@ export default async function Page({
     }
 
     return (
-        <div className="mb-4 px-4 sm:px-6 lg:px-8">
+            <div className="mb-4 px-4 sm:px-6 lg:px-8">
 
             <div className="card card-side bg-base-100 shadow-sm grid grid-cols-1 lg:grid-cols-2">
 
@@ -156,23 +155,12 @@ export default async function Page({
 
                     {/* Buttons */}
                     <div className="flex flex-col gap-3 pb-4 sm:flex-row sm:gap-6">
-                         <div>
-                            const AddToTodaysPlanBtn = () => {
-                            const {addToTodaysPlan}=useTodayPlan();
-                                
-                                return (
-                                      
-                                    <div>
-                                        <button onClick={()=>addToTodaysPlan(library)}className="btn w-full bg-[#C2F800] text-black sm:w-auto">
-                                    <Calendar size={20} />
-                                    Add to today's plan
-                                </button>
-                                    </div>
-                                );
-                            };
-                            
-                         </div>
-                       
+                
+                            <div>
+                               <AddToTodaysPlanBtn key={library.id} library={library}></AddToTodaysPlanBtn></div>
+                            </div>
+
+
 
                         <button className="btn w-full bg-transparent border-slate-600 sm:w-auto">
                             <Bookmark size={20} />
@@ -184,7 +172,6 @@ export default async function Page({
                 </div>
 
             </div>
-
-        </div>
+       
     )
 };
