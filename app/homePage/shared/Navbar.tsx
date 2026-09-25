@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import NavLinkClass from './NavLink';
 
 const Navbar = () => {
     return (
@@ -18,8 +19,8 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-6">
-                        <li><Link href='/' className="text-[#C2F800] bg-slate-700 rounded-4xl">Workouts</Link></li>
-                        <li><button className='text-white'>My Plan</button></li>
+                        <li><NavLinkClass href='/'>Workouts</NavLinkClass></li>
+                        <li><NavLinkClass href='/my-plan'>My Plan</NavLinkClass></li>
                     </ul>
                 </div>
                 <div className="navbar-end gap-5">
@@ -41,8 +42,8 @@ const Navbar = () => {
 
             <div className="collapse-content lg:hidden z-1">
                 <ul className="menu">
-                        <li><Link href='/' className="text-[#C2F800] bg-slate-700 rounded-4xl">Workouts</Link></li>
-                    <li><button className='text-white'>My Plan</button></li>
+                       <li><NavLinkClass href='/'>Workouts</NavLinkClass></li>
+                        <li><NavLinkClass href='/my-plan'>My Plan</NavLinkClass></li>
                 </ul>
             </div>
         </div>

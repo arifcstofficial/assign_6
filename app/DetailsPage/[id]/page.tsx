@@ -3,6 +3,7 @@ import React from 'react';
 import Image from "next/image";
 import { notFound } from 'next/navigation';
 import { Bookmark, Calendar } from 'lucide-react';
+import AddToTodaysPlanBtn from '@/app/components/addToTodaysPlanBtn';
 
 const GetData = async () => {
     const response = await fetch(
@@ -155,11 +156,23 @@ export default async function Page({
 
                     {/* Buttons */}
                     <div className="flex flex-col gap-3 pb-4 sm:flex-row sm:gap-6">
-
-                        <button className="btn w-full bg-[#C2F800] text-black sm:w-auto">
-                            <Calendar size={20} />
-                            Add to today's plan
-                        </button>
+                         <div>
+                            const AddToTodaysPlanBtn = () => {
+                            const {addToTodaysPlan}=useTodayPlan();
+                                
+                                return (
+                                      
+                                    <div>
+                                        <button onClick={()=>addToTodaysPlan(library)}className="btn w-full bg-[#C2F800] text-black sm:w-auto">
+                                    <Calendar size={20} />
+                                    Add to today's plan
+                                </button>
+                                    </div>
+                                );
+                            };
+                            
+                         </div>
+                       
 
                         <button className="btn w-full bg-transparent border-slate-600 sm:w-auto">
                             <Bookmark size={20} />
