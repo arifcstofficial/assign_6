@@ -7,6 +7,10 @@ const TodaysPlanPage = () => {
     const { todaysPlan,removeFromTodaysPlan } = useTodayPlan();
     return (
         <div className="space-y-4">
+            {if(todaysPlan.length==0)
+            
+            }
+                  
             {todaysPlan.map((library) => (
                 <TodaysPlanCard
                     key={library.id}

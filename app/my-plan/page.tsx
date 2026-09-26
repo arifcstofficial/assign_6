@@ -1,10 +1,11 @@
 "use client"
 import React, { useState } from 'react';
 import TodaysPlanPage from './todaysPlan/page';
+import SavedPlanPage from './SavedPlan/SavedPlanPage';
 
 const MyPlanPage = () => {
 
-   const[showTodaysPlanPage,setShowTodaysPlanPage]=useState(false); 
+    const [showTodaysPlanPage, setShowTodaysPlanPage] = useState(true);
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -30,17 +31,17 @@ const MyPlanPage = () => {
             </div>
 
             {/* badges and sort-By */}
-            
-                <div>
-                    <div role="tablist" className="tabs tabs-lift">
-                        <button onClick={()=>setShowTodaysPlanPage(true)} role="tab" className="tab hover:bg-yellow-200 hover:text-black">Today's Plan</button>
-                        <a role="tab" className="tab tab-active hover:bg-yellow-200 hover:text-black">Saved</a>
-                    </div>
-                </div>
-            
+
+            <div>
+                <div role="tablist" className="tabs tabs-lift gap-3">
+                    <button onClick={() => setShowTodaysPlanPage(true)} role="tab" className={showTodaysPlanPage ? "tab-active text-[#C2F800]"
+                        : "tab opacity-50 hover:opacity-100 hover:bg-yellow-200 hover:text-black"}>Today's Plan</button>
+                    <button onClick={() => setShowTodaysPlanPage(false)} role="tab" className={!showTodaysPlanPage ? "tab tab-active text-[#C2F800]" : "tab opacity-50 hover:opacity-100 hover:bg-yellow-200 hover:text-black"} > Saved </button>                    </div>
+            </div>
+
             {showTodaysPlanPage && <TodaysPlanPage></TodaysPlanPage>}
-            
-            
+            {!showTodaysPlanPage && <SavedPlanPage></SavedPlanPage>}
+
         </div>
     );
 };

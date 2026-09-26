@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 import NavLinkClass from './NavLink';
 import { useTodayPlan } from '@/app/context/TodaysPlanContext';
+import Link from 'next/link';
 
 const Navbar = () => {
  const {todaysPlan}=useTodayPlan();
@@ -27,13 +28,13 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-5">
                     <div className='flex items-center justify-center gap-3'>
-                        <button className="bg-transparent border-none shadow-none text-white btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">Plan</button>
+                        <Link href='/my-plan' className="bg-transparent border-none shadow-none text-white btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">Plan</Link>
 
                        <div className="badge bg-amber-200 badge-md text-black badge-outline rounded-full">{todaysPlan.length}</div>
 
                     </div>
                     <div className='flex items-center justify-center gap-3'>
-                        <button className="bg-transparent border-none shadow-none text-slate-400 btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">Saved</button>
+                        <Link href='/my-plan' className="bg-transparent border-none shadow-none text-slate-400 btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">Saved</Link>
                         <div className="bg-[##C2F800]">
                             <div className="badge bg-transparent border-slate-600 badge-outline text-white">0</div>
                         </div>
