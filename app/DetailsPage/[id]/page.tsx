@@ -3,10 +3,11 @@ import Image from "next/image";
 import { notFound } from 'next/navigation';
 import { Bookmark, Calendar } from 'lucide-react';
 import AddToTodaysPlanBtn from '@/app/components/addToTodaysPlanBtn';
+import SaveForlaterBtn from '@/app/components/saveForLaterBtn';
 
 const GetData = async () => {
     const response = await fetch(
-        'https://api.abcz.workers.dev/api/fitlog'
+        'https://api.api-store.workers.dev/api/fitlog'
     );
 
     if (!response.ok) {
@@ -36,7 +37,7 @@ export default async function Page({
     }
 
     return (
-            <div className="mb-4 px-4 sm:px-6 lg:px-8">
+        <div className="mb-4 px-4 sm:px-6 lg:px-8">
 
             <div className="card card-side bg-base-100 shadow-sm grid grid-cols-1 lg:grid-cols-2">
 
@@ -154,24 +155,22 @@ export default async function Page({
                     </div>
 
                     {/* Buttons */}
-                    <div className="flex flex-col gap-3 pb-4 sm:flex-row sm:gap-6">
-                
+                    <div className="flex gap-4">
+                        <div className="flex flex-col gap-3 pb-4 sm:flex-row sm:gap-6">
+
                             <div>
-                               <AddToTodaysPlanBtn key={library.id} library={library}></AddToTodaysPlanBtn></div>
-                            </div>
+                                <AddToTodaysPlanBtn key={library.id} library={library}></AddToTodaysPlanBtn></div>
+                        </div>
+                        <div>
+                         <SaveForlaterBtn key={library.id} library={library}></SaveForlaterBtn></div>
 
-
-
-                        <button className="btn w-full bg-transparent border-slate-600 sm:w-auto">
-                            <Bookmark size={20} />
-                            Save for later
-                        </button>
+                        </div>
 
                     </div>
-
                 </div>
-
             </div>
-       
+
+    
+
     )
 };

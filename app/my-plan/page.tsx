@@ -1,49 +1,96 @@
-"use client"
-import React, { useState } from 'react';
-import TodaysPlanPage from './todaysPlan/page';
-import SavedPlanPage from './SavedPlan/SavedPlanPage';
+"use client";
+
+import React, { useState } from "react";
+
+import TodaysPlanPage from "./todaysPlan/page";
+import SavedPlanPage from "./SavedPlan/SavedPlanPage";
+
+import TodaysPlanStatistics from "./todaysPlan/TodaysPlanStatistics";
+import SavedPlanStatistics from "./SavedPlan/SavedPlanStatistics";
 
 const MyPlanPage = () => {
+  const [showTodaysPlanPage, setShowTodaysPlanPage] = useState(true);
 
-    const [showTodaysPlanPage, setShowTodaysPlanPage] = useState(true);
-    return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+  // Default sorting
+  const [sortBy, setSortBy] = useState("duration");
 
-            <div className="my-4">
-                <h1 className='font-bold text-4xl'>MY PLAN</h1>
-                <p>Cap of five lifts for today. Finish them, then load more.</p>
-            </div>
+  return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Header */}
+      <div className="my-4">
+        <h1 className="text-4xl font-bold">MY PLAN</h1>
+        <p>Cap of five lifts for today. Finish them, then load more.</p>
+      </div>
 
-            {/* exercise,calories and minutes */}
-            <div className="flex justify-between my-5 bg-slate-600 px-12 py-8 rounded-2xl">
-                <div>
-                    <h1>Exercises</h1>
-                    <p className="text-yellow-400 font-bold text-4xl">2</p>
-                </div>
-                <div>
-                    <h1>Minutes</h1>
-                    <p className="font-bold text-4xl">132</p>
-                </div>
-                <div>
-                    <h1>Calories</h1>
-                    <p className="font-bold text-4xl">54</p>
-                </div>
-            </div>
+      {/* Statistics */}
+      <div>
+        {showTodaysPlanPage ? (
+          <TodaysPlanStatistics />
+        ) : (
+          <SavedPlanStatistics />
+        )}
+      </div>
 
-            {/* badges and sort-By */}
+      {/* Tabs + Sort By */}
+      <div className="flex justify-between lg:p-5 mt-27 lg:mt-25">
+        {/* Tabs */}
+        <div>
+          <div role="tablist" className="tabs tabs-lift gap-3">
+            <button
+              onClick={() => setShowTodaysPlanPage(true)}
+              role="tab"
+              className={
+                showTodaysPlanPage
+                  ? "tab-active text-[#C2F800]"
+                  : "tab opacity-50 hover:bg-yellow-200 hover:text-black hover:opacity-100"
+              }
+            >
+              Today's Plan
+            </button>
 
-            <div>
-                <div role="tablist" className="tabs tabs-lift gap-3">
-                    <button onClick={() => setShowTodaysPlanPage(true)} role="tab" className={showTodaysPlanPage ? "tab-active text-[#C2F800]"
-                        : "tab opacity-50 hover:opacity-100 hover:bg-yellow-200 hover:text-black"}>Today's Plan</button>
-                    <button onClick={() => setShowTodaysPlanPage(false)} role="tab" className={!showTodaysPlanPage ? "tab tab-active text-[#C2F800]" : "tab opacity-50 hover:opacity-100 hover:bg-yellow-200 hover:text-black"} > Saved </button>                    </div>
-            </div>
-
-            {showTodaysPlanPage && <TodaysPlanPage></TodaysPlanPage>}
-            {!showTodaysPlanPage && <SavedPlanPage></SavedPlanPage>}
-
+            <button
+              onClick={() => setShowTodaysPlanPage(false)}
+              role="tab"
+              className={
+                !showTodaysPlanPage
+                  ? "tab tab-active text-[#C2F800]"
+                  : "tab opacity-50 hover:bg-yellow-200 hover:text-black hover:opacity-100"
+              }
+            >
+              Saved
+            </button>
+          </div>
         </div>
-    );
+
+        {/* Sort By */}
+        <div className="flex items-center gap-2">
+          <label htmlFor="sortBy" className="font-medium">
+            Sort By
+          </label>
+
+          <select
+            id="sortBy"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="select select-sm border-gray-300 bg-transparent focus:outline-none"
+          >
+            <option value="duration">Duration</option>
+            <option value="calories">Calories</option>
+            <option value="rating">Rating</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Current Plan */}
+      {showTodaysPlanPage && (
+        <TodaysPlanPage sortBy={sortBy} />
+      )}
+
+      {!showTodaysPlanPage && (
+        <SavedPlanPage sortBy={sortBy} />
+      )}
+    </div>
+  );
 };
 
 export default MyPlanPage;

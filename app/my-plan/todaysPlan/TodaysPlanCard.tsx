@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { FaCheck } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -20,7 +21,7 @@ import { LibraryDataType } from "@/app/types/LibraryDataType";
 interface TodaysPlanCardProps {
   library: LibraryDataType;
   onDelete: (id: number) => void;
-  onMarkDone: (id: number) => void;
+    onMarkDone: (id: number) => void;
 }
 
 const TodaysPlanCard = ({
@@ -82,13 +83,14 @@ const TodaysPlanCard = ({
                 View Details
               </Link>
 
-              <button
-                onClick={() => onMarkDone(library.id)}
-                className="btn btn-sm rounded-full border-none bg-[#C2F800] px-4 text-black hover:bg-[#aee000]"
-              >
-                <Check size={16} />
-                Mark as Done
-              </button>
+<button
+  onClick={() => onMarkDone(library.id)}
+  className="flex items-center gap-2 rounded-lg bg-[#C2F800] px-4 py-2 font-semibold text-black transition hover:bg-[#aee000]"
+>
+  <FaCheck />
+  Mark as Done
+</button>
+
 
               <button
                 onClick={() => onDelete(library.id)}

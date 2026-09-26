@@ -3,7 +3,7 @@ import { LibraryDataType } from '@/app/types/LibraryDataType';
 import React from 'react';
 
 const LibraryData = async () => {
-    const response = await fetch('https://api.abcz.workers.dev/api/fitlog');
+    const response = await fetch('https://api.api-store.workers.dev/api/fitlog');
     
 
       if (!response.ok) {
@@ -17,7 +17,7 @@ const TheLibrary = async () => {
     const libraries = await LibraryData() as LibraryDataType[];
 
     return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="library"className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className='mt-18 pb-7'>
                 <h1 className='font-bold text-4xl'>THE LIBRARY</h1>
                 <p>Twelve lifts covering every major muscle group.</p>
